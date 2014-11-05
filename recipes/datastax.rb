@@ -76,14 +76,14 @@ when "debian"
     # latest package available for cassandra is 2.x while you're trying to
     # install dsc12 which requests 1.2.x.
     apt_preference "cassandra" do
-      pin "version #{node.cassandra.version}"
+      pin "version #{node.cassandra.version}-#{node.cassandra.release}"
       pin_priority "700"
     end
   end
 
   package node['cassandra']['package_name'] do
     action :install
-    version node.cassandra.version
+    # version node.cassandra.version
     # giving C* some time to start up
     notifies  :run, "ruby_block[sleep30s]", :immediately
     notifies  :run, "execute[set_cluster_name]", :immediately

@@ -80,8 +80,8 @@ default[:cassandra] = {
   :trickle_fsync                        => false,
   :trickle_fsync_interval_in_kb         => 10240,
 
-  :listen_address                       => node[:opsworks][:instance][:private_ip],
-  :broadcast_address                    => node[:opsworks][:instance][:ip],
+  :listen_address                       => node[:ipaddress],
+  :broadcast_address                    => node[:ipaddress],
   :rpc_address                          => "0.0.0.0",
 
   :rpc_port                             => "9160",
